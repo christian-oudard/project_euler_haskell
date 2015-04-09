@@ -10,3 +10,10 @@ tryDiv n (x:xs)
     | otherwise  = tryDiv n xs
         where
             (q,r) = divMod n x
+ 
+primes :: [Integer]
+primes = 2 : sieve primes [3..] 
+    where
+        sieve (p:ps) xs =
+            let (h,t) = span (< p*p) xs 
+            in h ++ sieve ps [x | x<-t, rem x p /= 0]
