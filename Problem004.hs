@@ -1,16 +1,11 @@
+import Utility (digits)
+
 main = print problem4
 
-problem4 = [n | n <- nums, isPalindrome n]
+problem4 = maximum [n | n <- nums, isPalindrome n]
     where
         nums = [x*y | x <- [999,998..900], y <- [999,998..x]]
 
-isPalindrome n = reverse digits == digits
-    where digits = splitDigits n
+isPalindrome n = reverse ds == ds
+    where ds = digits n
 
-splitDigits n
-    | n < base   = [n]
-    | otherwise  = (splitDigits q) ++ [r]
-        where
-            (q,r) = n `divMod` base
-            base = 10
-            

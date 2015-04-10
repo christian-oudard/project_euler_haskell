@@ -17,3 +17,11 @@ primes = 2 : sieve primes [3..]
         sieve (p:ps) xs =
             let (h,t) = span (< p*p) xs 
             in h ++ sieve ps [x | x<-t, rem x p /= 0]
+
+digits n = case n of
+    0 -> []
+    _ -> digits q ++ [r]
+        where
+            (q,r) = divMod n 10
+
+unDigits ds = foldl (\a b -> 10*a + b) 0 ds
