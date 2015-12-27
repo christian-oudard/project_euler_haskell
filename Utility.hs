@@ -18,10 +18,12 @@ primes = 2 : sieve primes [3..]
             let (h,t) = span (< p*p) xs 
             in h ++ sieve ps [x | x<-t, rem x p /= 0]
 
+digits :: Integer -> [Integer]
 digits n = case n of
     0 -> []
     _ -> digits q ++ [r]
         where
             (q,r) = divMod n 10
 
+unDigits :: [Integer] -> Integer
 unDigits ds = foldl (\a b -> 10*a + b) 0 ds
