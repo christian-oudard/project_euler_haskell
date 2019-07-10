@@ -1,7 +1,8 @@
 -- The first prime-free region of size 10 is from 200 - 209.
 -- What is the first prime-free region of size 100?
 
-import Utility (primes)
+import Math.NumberTheory.Primes.Sieve (primes)
+
 
 primesByRegion k = f regions primes
   where
