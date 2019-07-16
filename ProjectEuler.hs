@@ -15,3 +15,11 @@ problem3 = maximum (factorize 600851475143)
 problem4 = maximum [n | n <- nums, isPalindrome (digits n)]
   where nums = [x*y | x <- [900..999], y <- [x..999]]
 
+-- What is the smallest number divisible by all the numbers from 1 to 20?
+problem5 = foldl1 lcm [1..20]
+
+--
+problem6 = squaredSum [1..100] - sumOfSquares [1..100]
+  where
+    squaredSum xs = sum xs ^ 2
+    sumOfSquares xs = sum (map (^2) xs)

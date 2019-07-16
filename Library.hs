@@ -1,6 +1,6 @@
 module Library where
 
-divBy :: Integral a => a -> a -> Bool
+divBy :: Integer -> Integer -> Bool
 divBy d n = n `mod` d == 0
 
 fibonacci :: [Integer]
@@ -24,7 +24,9 @@ primes = 2 : sieve primes [3..]
       let (h,t) = span (< p ^ 2) xs
       in h ++ sieve ps [x | x<-t, rem x p /= 0]
 
+digits :: Integer -> [Integer]
 digits = digitsBase 10
+
 digitsBase :: Integer -> Integer -> [Integer]
 digitsBase b n =
   let (q,r) = divMod n b
@@ -41,12 +43,5 @@ unDigitsBase b = foldl (\x y -> b*x + y) 0
 isPalindrome :: Eq a => [a] -> Bool
 isPalindrome xs = reverse xs == xs
 
-mergeLists :: Ord a => [a] -> [a] -> [a]
-mergeLists as [] = as
-mergeLists [] bs = bs
-mergeLists (a:as) (b:bs)
-  | a <= b     = a : mergeLists as (b:bs)
-  | otherwise  = b : mergeLists (a:as) bs
-
-factorial :: (Enum a, Num a) => a -> a
+factorial :: Integer -> Integer
 factorial n = product [1..n]
