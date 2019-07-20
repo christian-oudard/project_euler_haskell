@@ -45,3 +45,9 @@ isPalindrome xs = reverse xs == xs
 
 factorial :: Integer -> Integer
 factorial n = product [1..n]
+
+-- All contiguous subsets of length n.
+groupwise :: Int -> [a] -> [[a]]
+groupwise n xs
+  | length xs < n  = []
+  | otherwise  = take n xs : groupwise n (tail xs)
