@@ -46,8 +46,27 @@ isPalindrome xs = reverse xs == xs
 factorial :: Integer -> Integer
 factorial n = product [1..n]
 
--- All contiguous subsets of length n.
 groupwise :: Int -> [a] -> [[a]]
+-- All contiguous subsets of length n.
 groupwise n xs
   | length xs < n  = []
   | otherwise  = take n xs : groupwise n (tail xs)
+
+isTriple :: (Integer, Integer, Integer) -> Bool
+isTriple (a, b, c) = a^2 + b^2 == c^2
+
+euclidsFormula :: Integer -> Integer -> (Integer, Integer, Integer)
+euclidsFormula m n = (a, b, c)
+  where
+    a = m^2 - n^2
+    b = 2*m*n
+    c = m^2 + n^2
+
+pythagoreanTriples :: [(Integer, Integer, Integer)]
+pythagoreanTriples = [
+    euclidsFormula m n
+    | m <- [1..]
+    , n <- [1..m-1]
+    , odd (m + n)
+    , gcd m n == 1
+  ]
