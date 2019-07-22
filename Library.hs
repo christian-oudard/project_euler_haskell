@@ -18,6 +18,7 @@ factorize n = tryDiv n (2:[3,5..])
         where (q,r) = divMod n x
 
 primes :: [Integer]
+-- import Data.Numbers.Primes for a much better sieve.
 primes = 2 : sieve primes [3..]
   where
     sieve (p:ps) xs =

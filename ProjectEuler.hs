@@ -57,3 +57,7 @@ problem9 =
             case d of
               0 -> Just (a*n, b*n, c*n)
               _ -> Nothing
+
+-- #10 --
+-- Find the sum of all the primes below two million.
+problem10 = sum $ takeWhile (<2000000) primes
